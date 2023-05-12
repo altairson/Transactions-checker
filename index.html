@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <title>ERC-20 Transaction Checker</title>
+</head>
+<body>
+    
+    <div class="main">
+        <div class="input">
+            <div class="spreadsheet-data">
+                <p>Spreadsheet data(unique wallets only):</p>
+                <textarea name="data" id="s_data" cols="80" rows="30"></textarea>
+            </div>
+            <div class="transaction-data">
+                <p>Transaction data(wallets and amounts):</p>
+                <textarea name="data" id="t_data" cols="80" rows="30"></textarea>
+            </div>
+        </div>
+        <div>
+            <button id="compare_btn">compare</button>
+            <button id="extract_data">extraxt data from copied html</button>
+        </div>
+       
+
+        <div class="result">
+            <h3>Wallets from spreadsheet comparison results:</h3>
+            <div class="table-div">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Spreadsheet Wallet</th>
+                            <th>Match?</th>
+                            <th>Transaction Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="result_table">
+                       
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Transactions that did not match with any spreadsheet wallet:</h3>
+            <div class="table-div">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction Wallet</th>
+                            <th>Transaction Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="t_result_table">
+                       
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="result-buttons">
+                <button id="show_text">Show result raw text</button>
+                <button id="copy_result">Copy result</button>
+            </div>
+            
+            <div id="raw_text" class="hidden">
+                <b id="closer">x</b>
+                <h3>raw text for spreadsheet:</h3>
+                <textarea name="" id="result_text" cols="100" rows="50"></textarea>
+                <button id="wallet_toggle" class="with-wallets">exclude wallets</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
