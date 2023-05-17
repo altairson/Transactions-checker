@@ -21,6 +21,12 @@ $(document).ready(function(){
         extractData();
     })
 
+    $("#extract_data_bsc").click(function() {
+        extractDataBsc();
+    })
+
+    
+
     $("#wallet_toggle").click(function() {
         walletToggle();
     })
@@ -37,6 +43,27 @@ $(document).ready(function(){
             $("#wallet_toggle")[0].innerText = "include wallets";
         }
         
+    }
+
+    function extractDataBsc() {
+        let html_text = $("#t_data").val();
+        let html_array = html_text.split("<li ");
+        let data = [];
+        console.log(html_array[5]);
+        let raw_text = ``;
+        for(let i = 2; i < html_array.length; i++) {
+            let sub_array = html_array[i].split("?a=");
+            // let from = sub_array[1].split(`\">`)[0];
+            let to = sub_array[2].split(`\">`)[0];
+            let amount = sub_array[2].split(`">`)[5].split(' ')[0];
+            let obj = {
+                wallet: to,
+                amount: amount
+            }
+            raw_text += `${to} ${amount}\n`;
+            data.push(obj);
+        }
+        $("#t_data").val(raw_text);
     }
     
 
